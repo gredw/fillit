@@ -22,16 +22,22 @@ char	***store_tretrimino(char *filename) //put one tetromino in each box of my 3
 	int 	ret;
 	int 	fd;
 	char 	*str;
-	char 	tab[30][5][5];
+	char 	tab[30][5][6];
 	int 	row;
+	int count;
 
 	row = 0;
+	count = 0;
 	fd = open (filename, O_RDONLY);
 	while (((ret= read(fd, str, BUFF_SIZE))>= 0) && row < 5)
 	{
+		str[ret] = '\0';
 		tab[0][row]= str;
+		tab[0][row][5]= '\0';
+		printf("read line:%s\n", tab[0][row]); //PRINT	
 		row++;
 	}
+	return(tab);
 }
 
 int	count_hashtagdot (char ***tab) // check if each tetrimino  block has 4# && 12.
@@ -58,8 +64,13 @@ int	count_hashtagdot (char ***tab) // check if each tetrimino  block has 4# && 1
 			z++;
 		}
 		row++;
+		printf("nb # =%d && .=%d ", count, dot); //PRINT
 		if (count == 4 && dot == 12)
+		{	
+			printf("return 1\n"); //PRINT
 			return (1);
+		}
+	printf("return -1\n");	//PRINT
 	return (-1);
 }
     
@@ -76,15 +87,23 @@ int	check_validchar(char ***tab) // check if all char are ok
 	while (row < 5)
 	{
 		if (tab[col][row][4] != '\n')
+		{
+			printf("No new line at the end return -1\n"); //PRINT
 			return (-1);
+		}
 		while (z < 5)
 		{
 			if (tab[col][row][z] != '.' || tab[col][row][z] != '#' || tab[col][row][z] != '\n')
+			{
+				printf("Not only . and # return -1\n");//PRINT
 				return(-1);
+			}
 			z++;
 		}
 		row++;
 	}
+	printf("only . && # return 1\n") //PRINT
+	return(1);
 }
 
 int check_nbconnexions(char ***tab)
@@ -131,9 +150,13 @@ int check_nbconnexions(char ***tab)
         }
 	row++;
 	}
-	if ( count < 6)
+	if (count < 6)
+	{
+		printf("nb of connexions=%d return -1\n", count); //PRINT
 		return(-1);
-	return(0);
+	}
+	printf("nb of connexions=%d return 1\n", count); //PRINT
+	return(1);
 }
     
 int	check_tetrimino(char ***tab)
@@ -147,3 +170,10 @@ int	check_tetrimino(char ***tab)
 	return (0);
 }
 
+int main (int argv, char**argc)
+{
+	int ret;
+	int fd;
+	
+	
+	
