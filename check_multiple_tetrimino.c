@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
+
 #include "libft/ft_strjoin.c"
 #include "libft/libft.h"
 #include "libft/ft_strlen.c"
@@ -247,12 +248,10 @@ int	check_tetrimino(char ***tab, int *ret)
 
 		col++;
 	}
-	//	if (check_nbconnexions(tab) == -1)
-	//		return (-1);
 	return (1);
 }
 
-int main (int argc, char **argv)
+/*int main (int argc, char **argv)
 {
 	int ret;
 	int a;
@@ -268,15 +267,15 @@ int main (int argc, char **argv)
 			printf("ret = -1\n");//PRINT
 			return (-1);
 		}
-	/*	while (i < 5)
-		{
-			printf("array[0][%d] =%s\n",i, array[0][i]);//PRINT
-			i++;	
+	//	while (i < 5)
+	//	{
+	//		printf("array[0][%d] =%s\n",i, array[0][i]);//PRINT
+	//		i++;	
 
-		}*/
+	//	}
 		ret = check_tetrimino(array, nb);
 		printf("ret = %d\n", ret);//PRINT
 	}
 	return (0);
 }
-
+*/

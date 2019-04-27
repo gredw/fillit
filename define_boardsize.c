@@ -12,62 +12,35 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include "fillit.h"
 
-int		open_check(char *filename)
+char **define_boardsize(int nb)
 {
-	int		fd;
-	int		ret;
-	int 		k;
-	char str[547];
-
-	k = 20;
-	if ((fd = open(filename, O_RDONLY)) == -1)
-		return (-1);
-	ret = read(fd, str, 546);
-	if (ret > 545 || ret == -1 || ret % 21 == 0 || ret < 20)
-		return (-1);
-	str[ret] = '\0';
-	while (k < ret)
-	{
-		if (str[k] != '\n')
-			return (-1);
-		k += 21;
-	}
-	if (close(fd) == -1)
-		return (-1);
-	return ((ret / 21) + 1);
-}
-
-char **define_boardsize(char *filename)
-{
-	int nb;
 	char **board;
 	int i;
 	int k;	
 
 	i = 0;
 	k=0;
-	nb = open_check(filename) * 4;
+int j = 0;
+	nb = nb * 4;
 	while (i * i < nb)	
 		i++;
 	board = (char**)malloc(sizeof(char*) * i);
-	if (board = NULL)
+	if (board == NULL)
 		return (NULL);
 	while (k < i)
 	{
-		board[k] = (char*)malloc(sizeof(char) *i);
+		board[k] = (char*)malloc(sizeof(char) *(i + 2));
+		board[k][i] = '\n';
+		board[k][i + 1] = '\0';
+		board[k][j] = '*';
+		printf("%c", board[k][j]);
 		k++;
+j++;
 	}
-	if (board[k] = NULL)
+	if (board[k] == NULL)
 		return (NULL);
 	return (board);
-}
-
-
-int main(int argc, char **argv)
-{
-	int nb;
-
-	nb = define_boardsize( argv[1]);
-	printf(" nb = %d\n", nb);
 }
