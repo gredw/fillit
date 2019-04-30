@@ -1,8 +1,8 @@
 #include "fillit.h"
-#include "libft/libft.h"
+/*#include "libft/libft.h"
 #include "define_boardsize.c"
 #include "check_multiple_tetrimino.c"
-
+*/
 
 
 int	main(int argc, char **argv)

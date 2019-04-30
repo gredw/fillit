@@ -10,16 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+/*#include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
-
-#include "libft/ft_strjoin.c"
 #include "libft/libft.h"
 #include "libft/ft_strlen.c"
 #include "libft/ft_strsub.c"
-#include "libft/ft_strcpy.c"
 #define BUFF_SIZE 546
+*/
+
+#include "fillit.h"
+#include "libft/ft_strsub.c"
 
 
 char ***malloc_3darray(int col, int row, int z)
