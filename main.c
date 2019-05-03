@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: grougeau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/30 15:24:36 by grougeau          #+#    #+#             */
+/*   Updated: 2019/05/02 16:49:10 by grougeau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 /*#include "libft/libft.h"
 #include "define_boardsize.c"
@@ -27,6 +39,7 @@ int	main(int argc, char **argv)
 		ret = check_tetrimino(array, nb);
 		printf("ret = %d\n", ret);//PRINT
 		
+		coordinates(*nb, array);
 		board = define_boardsize (*nb);
 			
 		
