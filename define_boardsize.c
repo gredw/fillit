@@ -16,18 +16,29 @@
 */
 #include "fillit.h"
 
-char **define_boardsize(int nb)
+int 	board_width(int nb)
 {
-	char **board;
 	int i;
-	int k;	
 
 	i = 0;
-	k=0;
-int j = 0;
 	nb = nb * 4;
 	while (i * i < nb)	
 		i++;
+	return (i);
+}
+	
+
+
+char **define_boardsize(int nb)
+{
+	char **board;
+	int k;
+	int i;	
+
+	
+	k=0;
+	int j = 0;
+	i = board_width(nb);
 	board = (char**)malloc(sizeof(char*) * i);
 	if (board == NULL)
 		return (NULL);

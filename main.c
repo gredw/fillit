@@ -41,6 +41,8 @@ int	main(int argc, char **argv)
 		
 		coordinates(*nb, array);
 		board = define_boardsize (*nb);
+		get_board_coordinates(board, board_width(*nb));
+		
 			
 		
 

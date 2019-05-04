@@ -15,6 +15,8 @@ int	check_validchar(char **tab);
 int	check_nbconnexions(char **tab);
 int	check_tetrimino(char ***tab, int *ret);
 char	**define_boardsize(int nb);
-int *coordinates(int nb, char ***tetriminos);
+int 	*coordinates(int nb, char ***tetriminos);
+int 	board_width(int nb);
+int	*get_board_coordinates(char **board, int width);
 #endif
 
