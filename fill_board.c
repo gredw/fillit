@@ -83,21 +83,23 @@ void	fill_board(char **board, char ***tetromino, int nb)
 	xandy = get_board_coordinates(board, width, row, col);
 	
 
-	pathx = coord[i] - xandy[0];
-	pathy = coord[j] - xandy[1];
+	pathx = xandy[0] - coord[i];
+	pathy = xandy[1] - coord[j];
 
 	i = 0;
 	j = 1;
 	while (j < 8)
 	{
-		if(coord[i] - pathx < 0 || coord[i] - pathx > width || coord[j] -pathy < 0 || coord[j] - pathx > width || board[coord[i] - pathx] != '.' || board[coord[i] - pathx] != '.')
+		if(coord[i] + pathx < 0 || coord[i] + pathx > width || coord[j] + pathy < 0 || coord[j] + pathx > width || board[coord[i] + pathx][coord[j] + pathy] != '.')
 		{
 			xandy = get_board_coordinates(board, width, row++, col);
+			i  = -2;
+			j = -1;
 					// ET ON RECHECKE 
 		}
 		else 
 		{
-			board[col][row] = '#';
+			board[col][row] = '#';// CREER FONCTION QUI REMPLIT LA BOARD AVEC LE TETRI ACTUEL// PUIS TRETRI SUIVANT// ON RECHERCHE LE POINT SUIVANT DANS BOARD
 			row++;
 		}
 		if (row == 4)
