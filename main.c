@@ -6,7 +6,7 @@
 /*   By: grougeau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 15:24:36 by grougeau          #+#    #+#             */
-/*   Updated: 2019/05/02 16:49:10 by grougeau         ###   ########.fr       */
+/*   Updated: 2019/05/13 18:40:10 by grougeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ int	main(int argc, char **argv)
 	nb = &a;
 	char ***array;
 	char **board;
+	int *coord;
+	int *xandy;
 	int i = 0;
 	int k = 0;
+	int row;
+	int col;
 
 	if (argc)
 	{
@@ -39,9 +43,10 @@ int	main(int argc, char **argv)
 		ret = check_tetrimino(array, nb);
 		printf("ret = %d\n", ret);//PRINT
 		
-		coordinates(*nb, array);
+		coord = coordinates(*nb, array);
 		board = define_boardsize (*nb);
-		get_board_coordinates(board, board_width(*nb));
+		width = board_width(nb);
+		//xandy = get_board_coordinates(board, board_width(*nb), row, col);
 		
 			
 		

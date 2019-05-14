@@ -6,7 +6,7 @@
 /*   By: grougeau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:24:01 by grougeau          #+#    #+#             */
-/*   Updated: 2019/04/30 17:31:45 by grougeau         ###   ########.fr       */
+/*   Updated: 2019/05/13 19:11:38 by grougeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*#include <fcntl.h>
@@ -27,7 +27,15 @@ int 	board_width(int nb)
 	return (i);
 }
 	
-
+int board_width_bis(int **board)
+{
+	int i;
+	
+	i = 0;
+	while (board[0][i] != '\n')
+		i++;
+	return (i);
+}
 
 char **define_boardsize(int nb)
 {

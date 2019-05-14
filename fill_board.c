@@ -6,7 +6,7 @@
 /*   By: grougeau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 17:15:34 by grougeau          #+#    #+#             */
-/*   Updated: 2019/05/13 16:31:39 by grougeau         ###   ########.fr       */
+/*   Updated: 2019/05/13 19:11:29 by grougeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,28 +63,25 @@ int *get_boardcoordinates(char **board, int width, int row, int col)
 	return (NULL); 
 }
 
-int	fit_on__board(char **board, char ***tetromino, int nb)
+int	fit_on_board(int width, int pn, int *coord,int *xandy, char **board)
 {
 	int i;
 	int j;
 	int row;
 	int col;	
-	int width;
-	int *coord;
-	int *xandy;
 	int pathx;
 	int pathy;
+	int width;
 
 	row = 0;
 	col = 0;
-	width = board_width(nb);
-	coord = coordinates(nb, tetromino);
-	xandy = get_board_coordinates(board, width, row, col);
+	width = board_width_bis(board);
 	pathx = xandy[0] - coord[i];
 	pathy = xandy[1] - coord[j];
-	i = 0;
-	j = 1;
-	while (j < 8)
+	i = pn * 8;
+	j = pn * 8 + 1;
+
+	while (j < (pn * 8 + 7))
 	{
 		if(coord[i] + pathx < 0 || coord[i] + pathx > width || coord[j] + pathy < 0 || coord[j] + pathx > width || board[coord[i] + pathx][coord[j] + pathy] != '.')
 			return(-1);	
@@ -94,6 +91,25 @@ int	fit_on__board(char **board, char ***tetromino, int nb)
 	return(0);
 }
 
-			
-	
+char **place_piece(int pn, int *coord, char**board, int xandy[])
+{
+	int i;
+	int j;
+	int pathx;
+	int pathy;
+
+	pathx = xandy[0] - coord[i];
+	pathy = xandy[1] - coord[j];
+	i = pn * 8;
+	j = pn * 8 + 1;
+
+	while (j  < (pn * 8 + 7))
+	{
+		board[coord[i] + pathx][coord[j] + pathy] = 65 + pn;
+		i += 2;
+		j += 2;
+	}
+	return(board);
+}
+
 	
