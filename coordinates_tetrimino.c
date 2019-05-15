@@ -6,7 +6,7 @@
 /*   By: grougeau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 15:22:15 by grougeau          #+#    #+#             */
-/*   Updated: 2019/05/13 19:11:34 by grougeau         ###   ########.fr       */
+/*   Updated: 2019/05/14 15:54:22 by grougeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int *coordinates(int nb, char ***tetriminos)
 		}
 		col++;
 	}
-	while ( j < ( nb * 4 * 2))
+	while ( j < ( nb * 4 * 2))//PRINT
 	{
 		printf("%d", coord[j]);
 		j++;
