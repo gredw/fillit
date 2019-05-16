@@ -50,6 +50,7 @@ int *coordinates(int nb, char ***tetriminos)
 		printf("%d", coord[j]);
 		j++;
 	}
+	printf("\n");
 	return(coord);
 }
 		

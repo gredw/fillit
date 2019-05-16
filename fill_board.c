@@ -12,57 +12,6 @@
 
 #include "fillit.h"
 
-/*int *get_boardcoordinates(char **board, int width)
-{
-	int row;
-	int col;
-	int *xandy;
-
-	xandy = (int *)malloc(sizeof(int) * 2);
-	col= 0;
-	while (col < width)
-	{
-		row = 0;
-		while (row < width)
-		{
-			if(board[col][row] == '.')
-			{
-				xandy[0] = col;
-				xandy[1] = row;
-				printf("x =%d & y=%d\n", xandy[0], xandy[1]);
-				return (xandy);
-			}
-			row++;
-		}
-		col++;
-	}
-	return (NULL); 
-}*/
-
-int *get_boardcoordinates(char **board, int width, int row, int col)
-{
-	int *xandy;
-
-	xandy = (int *)malloc(sizeof(int) * 2);
-	while (col < width)
-	{
-		while (row < width)
-		{
-			if(board[col][row] == '.')
-			{
-				xandy[0] = col;
-				xandy[1] = row;
-				printf("x =%d & y=%d\n", xandy[0], xandy[1]);//PRINT
-				return (xandy);
-			}
-			row++;
-		}
-		row = 0;
-		col++;
-	}
-	return (NULL); 
-}
-
 int	fit_on_board(int pn, int *coord,int *xandy, char **board)
 {
 	int i;
@@ -79,7 +28,7 @@ int	fit_on_board(int pn, int *coord,int *xandy, char **board)
 	
 	while (j <= (pn * 8 + 7))
 	{
-		printf("piece %d%d\n", coord[i], coord[j]);
+		printf("piece %d%d\n", coord[i], coord[j]);//PRINT
 		if ((coord[i] + pathx) < 0 || (coord[i] + pathx) >= width || (coord[j] + pathy) < 0 || (coord[j] + pathy) >= width || board[coord[i] + pathx][coord[j] + pathy] != '.')
 		{
 				printf("piece %d%d NOT fitting\n", coord[i], coord[j]);
@@ -88,8 +37,8 @@ int	fit_on_board(int pn, int *coord,int *xandy, char **board)
 		i += 2;
 		j += 2;
 	}
-	printf("piece fits for xandy[0]=%d & xandy[1]=%d\n", xandy[0], xandy[1]);//PRINT
-	return(0);
+	printf("Tetri fits for xandy[0]=%d & xandy[1]=%d\n", xandy[0], xandy[1]);//PRINT
+	return(1);
 }
 
 char **place_piece(int pn, int *coord, char **board, int xandy[])
@@ -101,21 +50,22 @@ char **place_piece(int pn, int *coord, char **board, int xandy[])
 	int k = 0;
 	int l;
 
-	pathx = xandy[0] - coord[i];
-	pathy = xandy[1] - coord[j];
 	i = pn * 8;
 	j = pn * 8 + 1;
+	pathx = xandy[0] - coord[i];
+	pathy = xandy[1] - coord[j];
 
-	while (j  < (pn * 8 + 7))
+	while (j  <= (pn * 8 + 7))
 	{
-		board[coord[i] + pathx][coord[j] + pathy] = 65 + pn;
+		board[coord[i] + pathx][coord[j] + pathy] = (65 + pn);
 		i += 2;
 		j += 2;
 	}
+//	*pn = *pn + 1;
 	while (k < board_width_bis(board)) // PRINT
 	{
 		l=0;
-		while ( l < board_width_bis(board))
+		while ( l <= board_width_bis(board))
 		{
 			printf("%c", board[k][l]);
 			l++;
@@ -159,6 +109,6 @@ char **remove_piece( int pn, char **board)
 		k++;
 	}
 
-	return(board);
+	return (board);
 }
 

@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 {
 	int ret;
 	int a;
+	int b;
 	int *nb;
 	nb = &a;
 	char ***array;
@@ -30,10 +31,11 @@ int	main(int argc, char **argv)
 	int k = 0;
 	int row;
 	int col;
-	int pn; 
-
-	pn = 0;
-		if (argc)
+//	int *pn; 
+//	pn = &b;
+//	*pn = 0;
+	int pn = 0;
+	if (argc)
 	{
 		array = store_tretrimino(argv[1], nb);
 		if (array == NULL)
@@ -47,7 +49,11 @@ int	main(int argc, char **argv)
 		coord = coordinates(*nb, array);
 		board = define_boardsize (*nb);
 		//width = board_width(*nb);
-		solver(board, coord, *nb, pn);
+	//	while (pn < *nb)
+	//	{
+			solver(board, coord, *nb, pn);
+	//	}		
+		
 				
 		
 
