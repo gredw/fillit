@@ -6,7 +6,7 @@
 /*   By: grougeau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 17:15:34 by grougeau          #+#    #+#             */
-/*   Updated: 2019/05/14 17:20:03 by grougeau         ###   ########.fr       */
+/*   Updated: 2019/05/16 19:22:17 by grougeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	fit_on_board(int pn, int *coord,int *xandy, char **board)
 	
 	while (j <= (pn * 8 + 7))
 	{
-		printf("piece %d%d\n", coord[i], coord[j]);//PRINT
+		//printf("piece %d%d\n", coord[i], coord[j]);//PRINT
 		if ((coord[i] + pathx) < 0 || (coord[i] + pathx) >= width || (coord[j] + pathy) < 0 || (coord[j] + pathy) >= width || board[coord[i] + pathx][coord[j] + pathy] != '.')
 		{
-				printf("piece %d%d NOT fitting\n", coord[i], coord[j]);
+				//printf("piece %d%d NOT fitting\n", coord[i], coord[j]);
 				return(-1);
 		}	
 		i += 2;
@@ -61,28 +61,16 @@ char **place_piece(int pn, int *coord, char **board, int xandy[])
 		i += 2;
 		j += 2;
 	}
-//	*pn = *pn + 1;
-	while (k < board_width_bis(board)) // PRINT
-	{
-		l=0;
-		while ( l <= board_width_bis(board))
-		{
-			printf("%c", board[k][l]);
-			l++;
-		}
-		k++;
-	}
 	return(board);
 }
 
 char **remove_piece( int pn, char **board)
 {
+	printf("remove piece\n");
  	char letter;
 	int i;
 	int j;
-	int k;
-	int l;
-	k = 0;
+	i = 0;
  	letter = pn + 65;
 	while (i < board_width_bis(board))
 	{
@@ -93,22 +81,28 @@ char **remove_piece( int pn, char **board)
 			{ 
 				board[i][j] = '.';
 			}
-			l++;
+			j++;
 		}
-		k++;
+		i++;
 	}
-
-	while (k < board_width_bis(board)) // PRINT
-	{
-		l=0;
-		while ( l < board_width_bis(board))
-		{
-			printf("%c", board[k][l]);
-			l++;
-		}
-		k++;
-	}
-
+	printf("remove SHIT\n");
 	return (board);
+}
+
+void	print_board(char **board)
+{
+	int k = 0;
+	int j = 0;
+	printf("board width = %d\n", board_width_bis(board));
+	while (k < board_width_bis(board))
+	{
+		j = 0;
+		while (j <= board_width_bis(board))
+		{
+			printf("%c", board[k][j]);
+			j++;
+		}
+		k++;
+	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: grougeau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:24:01 by grougeau          #+#    #+#             */
-/*   Updated: 2019/05/14 17:19:53 by grougeau         ###   ########.fr       */
+/*   Updated: 2019/05/16 19:21:57 by grougeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*#include <fcntl.h>
@@ -38,16 +38,13 @@ int board_width_bis(char **board)
 	return (i);
 }
 
-char **define_boardsize(int nb)
+char **define_boardsize(int i)
 {
 	char **board;
-	int k;
-	int i;	
+	int k;	
 
-	
 	k = 0;
 	int j = 0;
-	i = board_width(nb);
 	printf("map width =%d\n",i); 
 	board = (char**)malloc(sizeof(char*) * i);
 	if (board == NULL)
@@ -80,6 +77,17 @@ char **define_boardsize(int nb)
 	k++;
 	}
 	return (board);
+}
+
+char **resize( char **board)
+{
+	int width;
+
+	width = board_width_bis(board) + 1;
+	//remember to free if you reassign
+	board = define_boardsize(width);
+	print_board(board);
+	return(board);
 }
 
 

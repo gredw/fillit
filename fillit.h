@@ -14,7 +14,7 @@ int		count_hashtagdot (char **tab);
 int		check_validchar(char **tab);
 int		check_nbconnexions(char **tab);
 int		check_tetrimino(char ***tab, int *ret);
-char	**define_boardsize(int nb);
+char	**define_boardsize(int i);
 int 	*coordinates(int nb, char ***tetriminos);
 int 	board_width(int nb);
 int		*get_board_coordinates(char **board, int width);
@@ -23,5 +23,7 @@ int 	fit_on_board(int pn, int *coord, int *xandy, char **board);
 char 	**place_piece(int pn, int *coord, char **board, int xandy[]);
 char	**remove_piece(int pn, char **board);
 int 	solver(char **board, int *coord, int nb, int pn);
+char 	**resize(char **board);
+void	print_board(char **board);
 #endif
 

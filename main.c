@@ -6,7 +6,7 @@
 /*   By: grougeau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 15:24:36 by grougeau          #+#    #+#             */
-/*   Updated: 2019/05/14 16:57:42 by grougeau         ###   ########.fr       */
+/*   Updated: 2019/05/16 19:21:34 by grougeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 /*#include "libft/libft.h"
 #include "define_boardsize.c"
 #include "check_multiple_tetrimino.c"
+#include <unistd.h>
 */
 
 
@@ -31,10 +32,8 @@ int	main(int argc, char **argv)
 	int k = 0;
 	int row;
 	int col;
-//	int *pn; 
-//	pn = &b;
-//	*pn = 0;
 	int pn = 0;
+	int width;
 	if (argc)
 	{
 		array = store_tretrimino(argv[1], nb);
@@ -47,16 +46,10 @@ int	main(int argc, char **argv)
 		printf("ret = %d\n", ret);//PRINT
 		
 		coord = coordinates(*nb, array);
-		board = define_boardsize (*nb);
-		//width = board_width(*nb);
-	//	while (pn < *nb)
-	//	{
-			solver(board, coord, *nb, pn);
-	//	}		
-		
-				
-		
-
+		width = board_width(*nb);
+		board = define_boardsize (width);
+		while (solver(&*board, coord, *nb, pn) == 0)
+			board = resize(&*board);
 	}
 	return (0);
 }
