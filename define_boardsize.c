@@ -9,11 +9,7 @@
 /*   Updated: 2019/05/16 19:21:57 by grougeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-*/
+
 #include "fillit.h"
 
 int 	board_width(int nb)
@@ -21,7 +17,6 @@ int 	board_width(int nb)
 	int i;
 
 	i = 0;
-	printf("NB of tetri= %d\n", nb);
 	nb = nb * 4;
 	while (i * i < nb)	
 		i++;
@@ -42,10 +37,8 @@ char **define_boardsize(int i)
 {
 	char **board;
 	int k;	
-
+	int j;
 	k = 0;
-	int j = 0;
-	printf("map width =%d\n",i); 
 	board = (char**)malloc(sizeof(char*) * i);
 	if (board == NULL)
 		return (NULL);
@@ -64,18 +57,6 @@ char **define_boardsize(int i)
 		}
 		k++;
 	}
-
-	k = 0;
-	while (k < i)
-	{
-		j = 0;
-		while( j < (i+ 1))
-		{
-		printf("%c", board[k][j]);
-		j++;
-		}	
-	k++;
-	}
 	return (board);
 }
 
@@ -86,7 +67,6 @@ char **resize( char **board)
 	width = board_width_bis(board) + 1;
 	//remember to free if you reassign
 	board = define_boardsize(width);
-	print_board(board);
 	return(board);
 }
 

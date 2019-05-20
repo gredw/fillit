@@ -7,6 +7,11 @@
 # include <unistd.h>
 # define BUFF_SIZE 546
 
+/*#include "libft/ft_putstr.c"
+#include "libft/ft_putchar.c"
+#include "libft/ft_putchar_fd.c"
+#include "libft/ft_strsub.c"
+*/
 char	***malloc_3darray(int col, int row, int z);
 int		open_check(char *filename, char *str);
 char	***store_tretrimino(char *filename, int *ret);
@@ -25,5 +30,10 @@ char	**remove_piece(int pn, char **board);
 int 	solver(char **board, int *coord, int nb, int pn);
 char 	**resize(char **board);
 void	print_board(char **board);
+/*void	ft_putstr(char const *s);
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
+void	ft_putchar(char c);
+void	ft_putchar_fd(char c, int fd);
+*/
 #endif
 

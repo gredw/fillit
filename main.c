@@ -11,45 +11,36 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-/*#include "libft/libft.h"
-#include "define_boardsize.c"
-#include "check_multiple_tetrimino.c"
-#include <unistd.h>
-*/
-
+#include "libft/ft_putstr.c"
+#include "libft/ft_putchar.c"
+#include "libft/ft_putchar_fd.c"
+#include "libft/ft_strsub.c"
 
 int	main(int argc, char **argv)
 {
 	int ret;
 	int a;
-	int b;
 	int *nb;
 	nb = &a;
 	char ***array;
 	char **board;
 	int *coord;
-	int i = 0;
-	int k = 0;
-	int row;
-	int col;
 	int pn = 0;
 	int width;
 	if (argc)
 	{
 		array = store_tretrimino(argv[1], nb);
-		if (array == NULL)
-		{
-			printf("ret = -1 error\n");//PRINT
+		if ((array == NULL) || ((ret = check_tetrimino(array, nb))== -1))
+		{	
+			ft_putstr("error\n");
 			return (-1);
 		}
-		ret = check_tetrimino(array, nb);
-		printf("ret = %d\n", ret);//PRINT
-		
 		coord = coordinates(*nb, array);
 		width = board_width(*nb);
 		board = define_boardsize (width);
 		while (solver(&*board, coord, *nb, pn) == 0)
 			board = resize(&*board);
+		print_board(board);
 	}
 	return (0);
 }

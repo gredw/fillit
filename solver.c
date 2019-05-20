@@ -30,9 +30,7 @@ int solver(char **board, int *coord, int nb, int pn)
 			{
 				place_piece(pn, coord, board, xandy);
 				if (solver(board, coord, nb, pn + 1) == 1)
-				{
 					return (1);
-				}
 				else 
 					remove_piece(pn, board);
 			}

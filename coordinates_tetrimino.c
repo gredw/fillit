@@ -19,7 +19,6 @@ int *coordinates(int nb, char ***tetriminos)
 	int z;
 	int i;
 	int *coord;
-	int j = 0;
 
 	i = 0;
 	coord = (int *) malloc(sizeof(int) * nb * 4 * 2);
@@ -45,12 +44,6 @@ int *coordinates(int nb, char ***tetriminos)
 		}
 		col++;
 	}
-	while ( j < ( nb * 4 * 2))//PRINT
-	{
-		printf("%d", coord[j]);
-		j++;
-	}
-	printf("\n");
 	return(coord);
 }
 		
