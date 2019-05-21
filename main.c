@@ -15,11 +15,14 @@
 #include "libft/ft_putchar.c"
 #include "libft/ft_putchar_fd.c"
 #include "libft/ft_strsub.c"
+#include "libft/ft_strdel.c"
+#include "libft/ft_memdel.c"
 
 int	main(int argc, char **argv)
 {
 	int ret;
 	int a;
+	a = 0;
 	int *nb;
 	nb = &a;
 	char ***array;
@@ -27,10 +30,10 @@ int	main(int argc, char **argv)
 	int *coord;
 	int pn = 0;
 	int width;
-	if (argc)
+	if (argc == 2)
 	{
-		array = store_tretrimino(argv[1], nb);
-		if ((array == NULL) || ((ret = check_tetrimino(array, nb))== -1))
+		
+		if (((array = store_tretrimino(argv[1], nb))== NULL) || ((ret = check_tetrimino(array, nb))== -1))
 		{	
 			ft_putstr("error\n");
 			return (-1);
@@ -41,6 +44,7 @@ int	main(int argc, char **argv)
 		while (solver(&*board, coord, *nb, pn) == 0)
 			board = resize(&*board);
 		print_board(board);
+		clear_all(array, coord, *nb);
 	}
 	return (0);
 }

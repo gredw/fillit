@@ -5,7 +5,8 @@ SRC = main.c \
 	define_boardsize.c \
 	check_multiple_tetrimino.c \
 	coordinates_tetrimino.c \
-	fill_board.c
+	fill_board.c \
+	open_store_tetrimino.c
 
 BINARY = $(SRC:.c=.o)
 
@@ -15,8 +16,8 @@ CC = gcc
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(FLAGS) -c $(SRC)
-	$(CC) $(FLAGS)  -o $(NAME) $(BINARY)
+	$(CC) $(FLAGS) -g -c $(SRC)
+	$(CC) $(FLAGS) -g  -o  $(NAME) $(BINARY)
 	
 	
 clean:

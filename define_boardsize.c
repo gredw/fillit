@@ -65,9 +65,21 @@ char **resize( char **board)
 	int width;
 
 	width = board_width_bis(board) + 1;
-	//remember to free if you reassign
+	free_board(board);
 	board = define_boardsize(width);
 	return(board);
 }
 
+void free_board(char **board)
+{
+	int col;
+	int width;
 
+	width = board_width_bis(board);
+	col = 0;
+	while(col < width)
+	{
+		ft_strdel(&board[col]);
+		col++;
+	}
+}

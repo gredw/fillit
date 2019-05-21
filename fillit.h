@@ -30,10 +30,9 @@ char	**remove_piece(int pn, char **board);
 int 	solver(char **board, int *coord, int nb, int pn);
 char 	**resize(char **board);
 void	print_board(char **board);
-/*void	ft_putstr(char const *s);
-char	*ft_strsub(char const *s, unsigned int start, size_t len);
-void	ft_putchar(char c);
-void	ft_putchar_fd(char c, int fd);
-*/
+void	free_board(char **board);
+void 	free_coordinates(int *coord);
+void 	free_tetrimino(char ***tab, int nb);
+void 	clear_all(char ***tetrimino, int *coord, int nb);
 #endif
 

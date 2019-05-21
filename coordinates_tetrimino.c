@@ -47,5 +47,8 @@ int *coordinates(int nb, char ***tetriminos)
 	return(coord);
 }
 		
-
+void free_coordinates(int *coord)
+{
+	ft_memdel((void *)&coord);
+}
 

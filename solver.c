@@ -34,7 +34,6 @@ int solver(char **board, int *coord, int nb, int pn)
 				else 
 					remove_piece(pn, board);
 			}
-
 			xandy[1]++;
 		}
 		xandy[0]++;

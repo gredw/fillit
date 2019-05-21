@@ -12,86 +12,6 @@
 
 #include "fillit.h"
 
-
-char ***malloc_3darray(int col, int row, int z)
-{
-	char ***array;
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	array = (char***)malloc(sizeof(char**) * col);
-	if (array == NULL)
-		return (NULL);
-	while(i < col)
-	{
-		array[i] = (char**)malloc(sizeof(char*)*row);
-		if (array[i] == NULL)
-		return (NULL);
-		while (j < row)
-		{
-			array[i][j] = (char*)malloc(sizeof(char) * (z + 1));
-			if (array[i] == NULL)
-				return (NULL);
-			j++;
-		}
-		i++;
-	}
-	return (array);
-}
-
-int		open_check(char *filename, char *str)
-{
-	int		fd;
-	int		ret;
-	int 		k;
-
-	k = 20;
-	if ((fd = open(filename, O_RDONLY)) == -1)
-		return (-1);
-	ret = read(fd, str, BUFF_SIZE);
-	if (ret > 545 || ret == -1 || ret % 21 == 0 || ret < 20)
-		return (-1);
-	str[ret] = '\0';
-	while (str && k < ret)
-	{
-		if (str[k] != '\n')
-			return (-1);
-		k += 21;
-	}
-	if (close(fd) == -1)
-		return (-1);
-	return ((ret / 21) + 1);
-}
-
-char	***store_tretrimino(char *filename, int *ret)
-{
-	char 	str[BUFF_SIZE + 1];
-	char 	***tab;
-	int 	row;
-	int	col;
-	int 	i;
-	i = 0;
-	col = 0;
-	if ((*ret = open_check(filename, str)) == -1)
-		return (NULL);
-	tab = malloc_3darray(27, 5, 5);
-	while (col < 26)
-	{
-		row = 0;
-		while (row < 4)
-		{
-			tab[col][row] = ft_strsub(str, i, 5);
-			row++;
-			i += 5;
-		}
-		i++;
-		col++;
-	}
-	return(tab);
-} 
-		
 int	count_hashtagdot (char **tab) // check if each tetrimino  block has 4# && 12.
 {
 	int row;
@@ -195,7 +115,7 @@ int	check_tetrimino(char ***tab, int *ret)
 	col = 0;
 	if (tab == NULL)
 		return (-1);
-	while ( tab[col] && col < *ret)
+	while (col < *ret)
 	{
 		if (check_validchar(tab[col]) == -1)
 			return (-1);
