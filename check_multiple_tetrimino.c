@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int	count_hashtagdot (char **tab) // check if each tetrimino  block has 4# && 12.
+int	count_hashtagdot (char **tab)
 {
 	int row;
 	int z;
@@ -39,7 +39,7 @@ int	count_hashtagdot (char **tab) // check if each tetrimino  block has 4# && 12
 		return (1);
 	return (-1);
 }
-int	check_validchar(char **tab) // check if all char are ok
+int	check_validchar(char **tab) 
 {
 	int row;
 	int z;
@@ -68,7 +68,6 @@ int check_nbconnexions(char **tab)
 	int count;
 
 	count = 0;
-	
 	row = 0;
 	while (row < 4)
     	{
@@ -86,6 +85,16 @@ int check_nbconnexions(char **tab)
 		}
 		row++;
 	}
+	return ((count + (check_nbconnexions_bis(tab)) < 6) ? -1 : 1);
+}
+   
+int check_nbconnexions_bis(char **tab)
+{
+	int row;
+	int z;
+	int count;
+
+	count = 0;
 	z = 0;
 	while (z < 4)
 	{
@@ -103,11 +112,9 @@ int check_nbconnexions(char **tab)
       		  }
 		z++;
 	}
-	if (count < 6)
-		return(-1);
-	return(1);
+	return(count);
 }
-    
+
 int	check_tetrimino(char ***tab, int *ret)
 {
 	int col;

@@ -18,34 +18,43 @@
 #include "libft/ft_strdel.c"
 #include "libft/ft_memdel.c"
 
-int	main(int argc, char **argv)
+int solver2(char *filename)
 {
 	int ret;
 	int a;
-	a = 0;
 	int *nb;
-	nb = &a;
 	char ***array;
 	char **board;
 	int *coord;
 	int pn = 0;
 	int width;
-	if (argc == 2)
-	{
-		
-		if (((array = store_tretrimino(argv[1], nb))== NULL) || ((ret = check_tetrimino(array, nb))== -1))
-		{	
-			ft_putstr("error\n");
-			return (-1);
-		}
-		coord = coordinates(*nb, array);
-		width = board_width(*nb);
-		board = define_boardsize (width);
-		while (solver(&*board, coord, *nb, pn) == 0)
-			board = resize(&*board);
-		print_board(board);
-		clear_all(array, coord, *nb, board);
+
+	nb = &a;
+	if (((array = store_tretrimino(filename, nb))== NULL) || ((ret = check_tetrimino(array, nb))== -1))
+	{	
+		ft_putstr("error\n");
+		return (-1);
 	}
+	coord = coordinates(*nb, array);
+	width = board_width(*nb);
+	board = define_boardsize (width);
+	while (solver(&*board, coord, *nb, pn) == 0)
+		board = resize(&*board);
+	print_board(board);
+	clear_all(array, coord, *nb, board);
+
 	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc != 2)
+	{	
+		ft_putstr("error\n");
+			return (-1);
+	}
+	else
+		solver2(argv[1]);
+	return(0);
 }
 	
