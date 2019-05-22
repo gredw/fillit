@@ -1,4 +1,17 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: grougeau <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/05/22 11:10:35 by grougeau          #+#    #+#              #
+#    Updated: 2019/05/22 11:33:14 by grougeau         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = fillit
+LIBRARY = libft/libft.a
 
 SRC = main.c \
 	solver.c \
@@ -15,16 +28,20 @@ CC = gcc
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(LIBRARY)
 	$(CC) $(FLAGS) -g -c $(SRC)
-	$(CC) $(FLAGS) -g  -o  $(NAME) $(BINARY)
+	$(CC) $(FLAGS) -g  -o  $(NAME) $(BINARY) libft/libft.a
 	
+$(LIBRARY):
+	make -C libft/
 	
 clean:
-	/bin/rm -f $(BINARY)
+	rm -f $(BINARY)
+	make clean -C libft/
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	rm -f $(NAME)
+	make fclean -C libft/
 
 re: fclean all
 

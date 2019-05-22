@@ -1,18 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   open_store_tetrimino.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: grougeau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/22 10:41:58 by grougeau          #+#    #+#             */
+/*   Updated: 2019/05/22 10:48:36 by grougeau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
-
-char ***malloc_3darray(int col, int row)
+char	***malloc_3darray(int col, int row)
 {
-	char ***array;
-	int i;
+	char	***array;
+	int		i;
 
 	i = 0;
 	array = (char***)malloc(sizeof(char**) * col);
 	if (array == NULL)
 		return (NULL);
-	while(i < col)
+	while (i < col)
 	{
-		array[i] = (char**)malloc(sizeof(char*)*row);
+		array[i] = (char**)malloc(sizeof(char*) * row);
 		if (array[i] == NULL)
 			return (NULL);
 		i++;
@@ -22,9 +33,9 @@ char ***malloc_3darray(int col, int row)
 
 int		open_check(char *filename, char *str)
 {
-	int		fd;
-	int		ret;
-	int 		k;
+	int	fd;
+	int	ret;
+	int k;
 
 	k = 20;
 	if ((fd = open(filename, O_RDONLY)) == -1)
@@ -46,11 +57,12 @@ int		open_check(char *filename, char *str)
 
 char	***store_tretrimino(char *filename, int *ret)
 {
-	char 	str[BUFF_SIZE + 1];
-	char 	***tab;
-	int 	row;
-	int	col;
-	int 	i;
+	char	str[BUFF_SIZE + 1];
+	char	***tab;
+	int		row;
+	int		col;
+	int		i;
+
 	i = 0;
 	col = 0;
 	if ((*ret = open_check(filename, str)) == -1)
@@ -68,15 +80,15 @@ char	***store_tretrimino(char *filename, int *ret)
 		i++;
 		col++;
 	}
-	return(tab);
-} 
+	return (tab);
+}
 
-void free_tetrimino(char ***tab, int nb)
+void	free_tetrimino(char ***tab, int nb)
 {
 	int col;
 	int row;
 
-	col= 0;
+	col = 0;
 	while (col < nb)
 	{
 		row = 0;
@@ -88,10 +100,10 @@ void free_tetrimino(char ***tab, int nb)
 		ft_memdel((void *)&tab[col]);
 		col++;
 	}
-	ft_memdel((void *) &tab);
+	ft_memdel((void *)&tab);
 }
 
-void clear_all(char ***tetrimino, int *coord,int nb, char **board)
+void	clear_all(char ***tetrimino, int *coord, int nb, char **board)
 {
 	free_tetrimino(tetrimino, nb);
 	free_coordinates(coord);

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_multiple_tetrimino.c                           :+:      :+:    :+:   */
+/*   check_multiple_tetrimino.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grougeau <grougeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grougeau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 17:17:10 by grougeau          #+#    #+#             */
-/*   Updated: 2019/05/02 16:54:20 by grougeau         ###   ########.fr       */
+/*   Created: 2019/05/22 10:09:04 by grougeau          #+#    #+#             */
+/*   Updated: 2019/05/22 10:16:49 by grougeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	count_hashtagdot (char **tab)
+int	count_hashtagdot(char **tab)
 {
 	int row;
 	int z;
@@ -24,7 +24,7 @@ int	count_hashtagdot (char **tab)
 	dot = 0;
 	while (row < 4)
 	{
-		z =  0;
+		z = 0;
 		while (z < 5)
 		{
 			if (tab[row][z] == '#')
@@ -39,7 +39,8 @@ int	count_hashtagdot (char **tab)
 		return (1);
 	return (-1);
 }
-int	check_validchar(char **tab) 
+
+int	check_validchar(char **tab)
 {
 	int row;
 	int z;
@@ -53,15 +54,15 @@ int	check_validchar(char **tab)
 		while (z < 4)
 		{
 			if (tab[row][z] != '.' && tab[row][z] != '#')
-				return(-1);
+				return (-1);
 			z++;
 		}
 		row++;
 	}
-	return(1);
+	return (1);
 }
 
-int check_nbconnexions(char **tab)
+int	check_nbconnexions(char **tab)
 {
 	int row;
 	int z;
@@ -70,15 +71,15 @@ int check_nbconnexions(char **tab)
 	count = 0;
 	row = 0;
 	while (row < 4)
-    	{
+	{
 		z = 0;
-		while(z < 4)
-        	{
-			if (tab[row][z] == '#') 	
-			{	
-				if ( z < 3 && tab[row][z + 1] == '#') 
+		while (z < 4)
+		{
+			if (tab[row][z] == '#')
+			{
+				if (z < 3 && tab[row][z + 1] == '#')
 					count++;
-               			if (z > 0 && tab[row][z - 1] == '#') 
+				if (z > 0 && tab[row][z - 1] == '#')
 					count++;
 			}
 			z++;
@@ -87,8 +88,8 @@ int check_nbconnexions(char **tab)
 	}
 	return ((count + (check_nbconnexions_bis(tab)) < 6) ? -1 : 1);
 }
-   
-int check_nbconnexions_bis(char **tab)
+
+int	check_nbconnexions_bis(char **tab)
 {
 	int row;
 	int z;
@@ -99,20 +100,20 @@ int check_nbconnexions_bis(char **tab)
 	while (z < 4)
 	{
 		row = 0;
-		while(row < 4)
-		{		
-			if (tab[row][z] == '#') 	
+		while (row < 4)
+		{
+			if (tab[row][z] == '#')
 			{
 				if (row > 0 && tab[row - 1][z] == '#')
 					count++;
-              			if (row < 3 && tab[row + 1][z] == '#')
+				if (row < 3 && tab[row + 1][z] == '#')
 					count++;
-          	 	}
+			}
 			row++;
-      		  }
+		}
 		z++;
 	}
-	return(count);
+	return (count);
 }
 
 int	check_tetrimino(char ***tab, int *ret)
