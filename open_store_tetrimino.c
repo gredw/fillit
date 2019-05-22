@@ -1,14 +1,12 @@
 #include "fillit.h"
 
 
-char ***malloc_3darray(int col, int row, int z)
+char ***malloc_3darray(int col, int row)
 {
 	char ***array;
 	int i;
-	int j;
 
 	i = 0;
-	j = 0;
 	array = (char***)malloc(sizeof(char**) * col);
 	if (array == NULL)
 		return (NULL);
@@ -17,14 +15,6 @@ char ***malloc_3darray(int col, int row, int z)
 		array[i] = (char**)malloc(sizeof(char*)*row);
 		if (array[i] == NULL)
 			return (NULL);
-		j = 0;
-		while (j < row)
-		{
-			array[i][j] = (char*)malloc(sizeof(char) * z);
-			if (array[i][j] == NULL)
-				return (NULL);
-			j++;
-		}
 		i++;
 	}
 	return (array);
@@ -65,7 +55,7 @@ char	***store_tretrimino(char *filename, int *ret)
 	col = 0;
 	if ((*ret = open_check(filename, str)) == -1)
 		return (NULL);
-	tab = malloc_3darray(*ret, 4, 5);
+	tab = malloc_3darray(*ret, 4);
 	while (col < *ret)
 	{
 		row = 0;
@@ -98,10 +88,12 @@ void free_tetrimino(char ***tab, int nb)
 		ft_memdel((void *)&tab[col]);
 		col++;
 	}
+	ft_memdel((void *) &tab);
 }
 
-void clear_all(char ***tetrimino, int *coord,int nb)
+void clear_all(char ***tetrimino, int *coord,int nb, char **board)
 {
 	free_tetrimino(tetrimino, nb);
 	free_coordinates(coord);
+	free_board(board);
 }

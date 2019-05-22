@@ -82,4 +82,5 @@ void free_board(char **board)
 		ft_strdel(&board[col]);
 		col++;
 	}
+	free(board);
 }

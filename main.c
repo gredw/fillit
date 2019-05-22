@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 		while (solver(&*board, coord, *nb, pn) == 0)
 			board = resize(&*board);
 		print_board(board);
-		clear_all(array, coord, *nb);
+		clear_all(array, coord, *nb, board);
 	}
 	return (0);
 }

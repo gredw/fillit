@@ -2,17 +2,10 @@
 # define FILLIT_H
 # include "libft/libft.h"
 # include <fcntl.h>
-# include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 # define BUFF_SIZE 546
 
-/*#include "libft/ft_putstr.c"
-#include "libft/ft_putchar.c"
-#include "libft/ft_putchar_fd.c"
-#include "libft/ft_strsub.c"
-*/
-char	***malloc_3darray(int col, int row, int z);
+char	***malloc_3darray(int col, int row);
 int		open_check(char *filename, char *str);
 char	***store_tretrimino(char *filename, int *ret);
 int		count_hashtagdot (char **tab);
@@ -33,6 +26,6 @@ void	print_board(char **board);
 void	free_board(char **board);
 void 	free_coordinates(int *coord);
 void 	free_tetrimino(char ***tab, int nb);
-void 	clear_all(char ***tetrimino, int *coord, int nb);
+void 	clear_all(char ***tetrimino, int *coord, int nb, char **board);
 #endif
 
