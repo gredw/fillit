@@ -20,7 +20,7 @@ int	solver2(int *nb, char ***array)
 	int		width;
 
 	pn = 0;
-	coord = coordinates(*nb, array);
+	coord = coordinates2(*nb, array);
 	width = board_width(*nb);
 	board = define_boardsize(width);
 	while (solver(&*board, coord, *nb, pn) == 0)

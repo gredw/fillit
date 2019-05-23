@@ -25,7 +25,7 @@ int		check_validchar(char **tab);
 int		check_nbconnexions(char **tab);
 int		check_tetrimino(char ***tab, int *ret);
 char	**define_boardsize(int i);
-int		*coordinates(int nb, char ***tetriminos);
+int		*coordinates2(int nb, char ***tetriminos);
 int		board_width(int nb);
 int		*get_board_coordinates(char **board, int width);
 int		board_width_bis(char **board);
@@ -42,4 +42,6 @@ void	clear_all(char ***tetrimino, int *coord, int nb, char **board);
 int		check_nbconnexions_bis(char **tab);
 int		solver2(int *nb, char ***array);
 int		checker(char *filename);
+int  coordinates1(char **tetriminos, int *coord, int i);
+
 #endif
